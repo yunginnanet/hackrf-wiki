@@ -12,9 +12,9 @@ For example usage of many of these functions, see the
 tool.
 
 
-##Setup, Initialization and Shutdown
+## Setup, Initialization and Shutdown
 
-###HackRF Init
+### HackRF Init
 Initialize libHackRF, including global libUSB context to support multiple HackRF
 hardware devices.
 
@@ -24,7 +24,7 @@ hardware devices.
 A value from the hackrf_error constants listed below.
 
 
-###HackRF Open
+### HackRF Open
 
 **Syntax:** `int hackrf_open(hackrf_device** device)`
 
@@ -32,7 +32,7 @@ A value from the hackrf_error constants listed below.
 A value from the hackrf_error constants listed below.
 
 
-###HackRF Device List
+### HackRF Device List
 Retrieve a list of HackRF devices attached to the system. This function finds
 all devices, regardless of permissions or availability of the hardware.
 
@@ -44,7 +44,7 @@ the system. The contents of the hackrf_device_list_t struct are decribed in the
 data structures section below.
 
 
-###HackRF Device List Open
+### HackRF Device List Open
 Open and acquire a handle on a device from the hackrf_device_list_t struct.
 
 **Syntax:** `int hackrf_device_list_open(hackrf_device_list_t* list, int idx, hackrf_device** device)`
@@ -62,7 +62,7 @@ value is HACKRF_SUCCESS.
 A value from the hackrf_error constants listed below.
 
 
-###HackRF Device List Free
+### HackRF Device List Free
 
 **Syntax:** `void hackrf_device_list_free(hackrf_device_list_t* list)`
 
@@ -71,20 +71,20 @@ A value from the hackrf_error constants listed below.
 `list` - A pointer to a hackrf_device_list_t returned by `hackrf_device_list()`
 
 
-###HackRF Open By Serial
+### HackRF Open By Serial
 
 **Syntax:** `int hackrf_open_by_serial(const char* const desired_serial_number, hackrf_device** device)`
 
 **Returns:**
 
-###HackRF Close
+### HackRF Close
 
 **Syntax:** `int hackrf_close(hackrf_device* device)`
 
 **Returns:**
 A value from the hackrf_error constants listed below.
 
-###HackRF Exit
+### HackRF Exit
 Cleanly shutdown libHackRF and the underlying USB context. This does not stop in
 progress transfers or close the HackRF hardware. ```hackrf_close()``` should be
 called before this to cleanly close the connection to the hardware.
@@ -94,9 +94,9 @@ called before this to cleanly close the connection to the hardware.
 **Returns:**
 A value from the hackrf_error constants listed below.
 
-##Using the Radio
+## Using the Radio
 
-###HackRF Start Rx
+### HackRF Start Rx
 **Syntax:** `int hackrf_start_rx(hackrf_device*, hackrf_sample_block_cb_fn, void* rx_ctx)`
 
 **Params:**
@@ -105,7 +105,7 @@ A value from the hackrf_error constants listed below.
 **Returns:**
 A value from the hackrf_error constants listed below.
 
-###HackRF Stop Rx
+### HackRF Stop Rx
 **Syntax:** `int hackrf_stop_rx(hackrf_device*)`
 
 **Params:**
@@ -114,7 +114,7 @@ A value from the hackrf_error constants listed below.
 **Returns:**
 A value from the hackrf_error constants listed below.
 
-###HackRF Start Tx
+### HackRF Start Tx
 **Syntax:** `int hackrf_start_tx(hackrf_device*, hackrf_sample_block_cb_fn, void* tx_ctx)`
 
 **Params:**
@@ -122,7 +122,7 @@ A value from the hackrf_error constants listed below.
 **Returns:**
 A value from the hackrf_error constants listed below.
 
-###HackRF Stop Tx
+### HackRF Stop Tx
 **Syntax:** `int hackrf_stop_tx(hackrf_device*)`
 
 **Params:**
@@ -131,7 +131,7 @@ A value from the hackrf_error constants listed below.
 A value from the hackrf_error constants listed below.
 
 
-###HackRF Set Baseband Filter Bandwidth
+### HackRF Set Baseband Filter Bandwidth
 **Syntax:** `int hackrf_set_baseband_filter_bandwidth(hackrf_device*, const uint32_t bandwidth_hz)`
 
 **Params:**
@@ -140,7 +140,7 @@ A value from the hackrf_error constants listed below.
 A value from the hackrf_error constants listed below.
 
 
-###HackRF Compute Baseband Filter BW
+### HackRF Compute Baseband Filter BW
 Compute best default value depending on sample rate (auto filter).
 
 **Syntax:** `uint32_t hackrf_compute_baseband_filter_bw(const uint32_t bandwidth_hz)`
@@ -152,7 +152,7 @@ A valid baseband filter width available from the Maxim MAX2837 frontend used by
 the radio.
 
 
-###HackRF Compute Baseband Filter BW Round Down LT
+### HackRF Compute Baseband Filter BW Round Down LT
 Compute nearest freq for bw filter (manual filter)
 
 **Syntax:** `uint32_t hackrf_compute_baseband_filter_bw_round_down_lt(const uint32_t bandwidth_hz)`
@@ -164,7 +164,7 @@ A valid baseband filter width available from the Maxim MAX2837 frontend used by
 the radio.
 
 
-###HackRF Set LNA Gain
+### HackRF Set LNA Gain
 Range 0-40 (step 8dB), IF gain in OsmoSDR
 
 **Syntax:** `int hackrf_set_lna_gain(hackrf_device* device, uint32_t value)`
@@ -173,7 +173,7 @@ Range 0-40 (step 8dB), IF gain in OsmoSDR
 
 **Returns:**
 
-###HackRF Set VGA Gain
+### HackRF Set VGA Gain
 Range 0-62 (step 2dB), BB gain in OsmoSDR
 
 **Syntax:** `int hackrf_set_vga_gain(hackrf_device* device, uint32_t value)`
@@ -182,7 +182,7 @@ Range 0-62 (step 2dB), BB gain in OsmoSDR
 
 **Returns:**
 
-###HackRF Set Tx VGA Gain
+### HackRF Set Tx VGA Gain
 Range 0-47 (step 1dB)
 
 **Syntax:** `int hackrf_set_txvga_gain(hackrf_device* device, uint32_t value)`
@@ -191,7 +191,7 @@ Range 0-47 (step 1dB)
 
 **Returns:**
 
-###HackRF Set Antenna Enable
+### HackRF Set Antenna Enable
 Antenna port power control
 
 **Syntax:** `int hackrf_set_antenna_enable(hackrf_device* device, const uint8_t value)`
@@ -200,14 +200,14 @@ Antenna port power control
 
 **Returns:**
 
-###HackRF Set Freq
+### HackRF Set Freq
 **Syntax:** `int hackrf_set_freq(hackrf_device* device, const uint64_t freq_hz)`
 
 **Params:**
 
 **Returns:**
 
-###HackRF Set Freq Explicit
+### HackRF Set Freq Explicit
 **Syntax:** `int hackrf_set_freq_explicit(hackrf_device* device, const uint64_t if_freq_hz, const uint64_t lo_freq_hz, const enum rf_path_filter path)`
 
 **Params:**
@@ -215,7 +215,7 @@ Antenna port power control
 **Returns:**
 
 
-###HackRF Set Sample Rate
+### HackRF Set Sample Rate
 **Syntax:** `int hackrf_set_sample_rate(hackrf_device* device, const double freq_hz)`
 
 **Params:**
@@ -223,7 +223,7 @@ Antenna port power control
 **Returns:**
 
 
-###HackRF Set Sample Rate Manual
+### HackRF Set Sample Rate Manual
 Currently 8-20MHz - either as a fraction, i.e. freq 20000000hz divider 2 ->
 10MHz or as plain old 10000000Hz (double) preferred rates are 8, 10, 12.5, 16,
 20MHz due to less jitter
@@ -233,7 +233,7 @@ Currently 8-20MHz - either as a fraction, i.e. freq 20000000hz divider 2 ->
 **Params:**
 
 **Returns:**
-###HackRF Set Amp Enable
+### HackRF Set Amp Enable
 Toggle the antenna port power for external amplifiers.
 
 **Syntax:** `int hackrf_set_amp_enable(hackrf_device* device, const uint8_t value)`
@@ -247,7 +247,7 @@ Toggle the antenna port power for external amplifiers.
 **Returns:**
 
 
-###HackRF Is Streaming
+### HackRF Is Streaming
 Check whether or not the HackRF device is currently streaming samples, either to
 or from the host system.
 
@@ -260,9 +260,9 @@ or from the host system.
 **Returns:**
 HACKRF_TRUE if the device is currently streaming.
 
-##Reading and Writing Registers
+## Reading and Writing Registers
 
-###HackRF MAX2837 Read
+### HackRF MAX2837 Read
 Read register values from the MAX2837 Baseband IC.
 
 **Syntax:** `int hackrf_max2837_read(hackrf_device* device, uint8_t register_number, uint16_t* value)`
@@ -271,7 +271,7 @@ Read register values from the MAX2837 Baseband IC.
 
 **Returns:**
 
-###HackRF MAX2837 Write
+### HackRF MAX2837 Write
 Write register values to the MAX2837 Baseband IC.
 
 **Syntax:** `int hackrf_max2837_write(hackrf_device* device, uint8_t register_number, uint16_t value)`
@@ -281,7 +281,7 @@ Write register values to the MAX2837 Baseband IC.
 
 **Returns:**
 
-###HackRF Si5351C Read
+### HackRF Si5351C Read
 Read register values from the Si5351C clock generator IC.
 
 **Syntax:** `int hackrf_si5351c_read(hackrf_device* device, uint16_t register_number, uint16_t* value)`
@@ -291,7 +291,7 @@ Read register values from the Si5351C clock generator IC.
 
 **Returns:**
 
-###HackRF Si5351C Write
+### HackRF Si5351C Write
 Write register values to the Si5351C clock generator IC.
 
 **Syntax:** `int hackrf_si5351c_write(hackrf_device* device, uint16_t register_number, uint16_t value)`
@@ -301,7 +301,7 @@ Write register values to the Si5351C clock generator IC.
 
 **Returns:**
 
-###HackRF RFFC5071 Read
+### HackRF RFFC5071 Read
 Read register values from the RFFC5071 mixer IC.
 
 **Syntax:** `int hackrf_rffc5071_read(hackrf_device* device, uint8_t register_number, uint16_t* value)`
@@ -310,7 +310,7 @@ Read register values from the RFFC5071 mixer IC.
 
 **Returns:**
 
-###HackRF RFFC5071 Write
+### HackRF RFFC5071 Write
 Write register values to the RFFC5071 mixer IC.
 
 **Syntax:** `int hackrf_rffc5071_write(hackrf_device* device, uint8_t register_number, uint16_t value)`
@@ -319,9 +319,9 @@ Write register values to the RFFC5071 mixer IC.
 
 **Returns:**
  
-##Updating Firmware
+## Updating Firmware
 
-###HackRF CPLD Write
+### HackRF CPLD Write
 Device will need to be reset after hackrf_cpld_write.
 
 **Syntax:** `int hackrf_cpld_write(hackrf_device* device, unsigned char* const data, const unsigned int total_length)`
@@ -331,7 +331,7 @@ Device will need to be reset after hackrf_cpld_write.
 **Returns:**
 
 
-###HackRF SPI Flash Erase
+### HackRF SPI Flash Erase
 
 **Syntax:** `int hackrf_spiflash_erase(hackrf_device* device)`
 
@@ -340,7 +340,7 @@ Device will need to be reset after hackrf_cpld_write.
 **Returns:**
 
 
-###HackRF SPI Flash Write
+### HackRF SPI Flash Write
 
 **Syntax:** `int hackrf_spiflash_write(hackrf_device* device, const uint32_t address, const uint16_t length, unsigned char* const data)`
 
@@ -349,7 +349,7 @@ Device will need to be reset after hackrf_cpld_write.
 **Returns:**
 
 
-###HackRF SPI Flash Read
+### HackRF SPI Flash Read
 
 **Syntax:** `int hackrf_spiflash_read(hackrf_device* device, const uint32_t address, const uint16_t length, unsigned char* data)`
 
@@ -358,9 +358,9 @@ Device will need to be reset after hackrf_cpld_write.
 **Returns:**
 
 
-##Board Identifiers
+## Board Identifiers
 
-###HackRF Board ID Read
+### HackRF Board ID Read
 
 **Syntax:** `int hackrf_board_id_read(hackrf_device* device, uint8_t* value)`
 
@@ -369,7 +369,7 @@ Device will need to be reset after hackrf_cpld_write.
 **Returns:**
 
 
-###HackRF Version String Read
+### HackRF Version String Read
 
 **Syntax:** `int hackrf_version_string_read(hackrf_device* device, char* version, uint8_t length)`
 
@@ -378,7 +378,7 @@ Device will need to be reset after hackrf_cpld_write.
 **Returns:**
 
 
-###HackRF Board Part ID Serial Number Read
+### HackRF Board Part ID Serial Number Read
 
 **Syntax:** `int hackrf_board_partid_serialno_read(hackrf_device* device, read_partid_serialno_t* read_partid_serialno)`
 
@@ -387,8 +387,8 @@ Device will need to be reset after hackrf_cpld_write.
 **Returns:**
 
 
-##Miscellaneous
-###HackRF Error Name
+## Miscellaneous
+### HackRF Error Name
 
 **Syntax:** `const char* hackrf_error_name(enum hackrf_error errcode)`
 
@@ -397,7 +397,7 @@ Device will need to be reset after hackrf_cpld_write.
 **Returns:**
 
 
-###HackRF Board ID Name
+### HackRF Board ID Name
 
 **Syntax:** `const char* hackrf_board_id_name(enum hackrf_board_id board_id)`
 
@@ -405,7 +405,7 @@ Device will need to be reset after hackrf_cpld_write.
 
 **Returns:**
 
-###HackRF USB Board ID Name
+### HackRF USB Board ID Name
 
 **Syntax:** `const char* hackrf_usb_board_id_name(enum hackrf_usb_board_id usb_board_id)`
 
@@ -414,7 +414,7 @@ Device will need to be reset after hackrf_cpld_write.
 **Returns:**
 
 
-###HackRF Filter Path Name
+### HackRF Filter Path Name
 
 **Syntax:** `const char* hackrf_filter_path_name(const enum rf_path_filter path)`
 
@@ -423,11 +423,11 @@ Device will need to be reset after hackrf_cpld_write.
 **Returns:**
 
 
-##Data Structures
+## Data Structures
 
 `typedef struct hackrf_device hackrf_device`
 
-```
+```C
 typedef struct {
 	hackrf_device* device;
 	uint8_t* buffer;
@@ -438,14 +438,14 @@ typedef struct {
 } hackrf_transfer;
 ```
 
-```
+```C
 typedef struct {
 	uint32_t part_id[2];
 	uint32_t serial_no[4];
 } read_partid_serialno_t;
 ```
 
-```
+```C
 typedef struct {
 	char **serial_numbers;
 	enum hackrf_usb_board_id *usb_board_ids;
@@ -460,9 +460,9 @@ typedef struct {
 `typedef int (*hackrf_sample_block_cb_fn)(hackrf_transfer* transfer)`
 
 
-##Enumerations
+## Enumerations
 
-###Supported board versions
+### Supported board versions
 
 These values identify the board type of the connected hardware. This value can
 be used as an indicator of capabilities, such as frequency range, bandwidth or
@@ -479,7 +479,7 @@ Most boards will identify as HackRF One, Jawbreaker or Rad1o. Jellybean was a
 pre-production revision of HackRF. No hardware device should intentionally
 report itself with an invalid board ID.
 
-```
+```C
 enum hackrf_board_id {
 	BOARD_ID_JELLYBEAN  = 0,
 	BOARD_ID_JAWBREAKER = 1,
@@ -489,9 +489,9 @@ enum hackrf_board_id {
 };
 ```
 
-###USB Product IDs
+### USB Product IDs
 
-```
+```C
 enum hackrf_usb_board_id {
 	USB_BOARD_ID_JAWBREAKER = 0x604B,
 	USB_BOARD_ID_HACKRF_ONE = 0x6089,
@@ -500,14 +500,14 @@ enum hackrf_usb_board_id {
 };
 ```
 
-###Transceiver Mode
+### Transceiver Mode
 HackRF can operate in three main transceiver modes, Receive, Transmit and Signal
 Source. There is also a CPLD update mode which is used to write firmware images
 to the CPLD.
 
 The transceiver mode can be changed with `hackrf_set_transceiver_mode` with the value parameter set to one of the following:
 
-```
+```C
 enum transceiver_mode_t {
 	TRANSCEIVER_MODE_OFF = 0,
 	TRANSCEIVER_MODE_RX = 1,
@@ -523,8 +523,8 @@ Transmit mode (TRANSCEIVER_MODE_TX) is used to stream samples from the host to t
 
 See [hackrf_transfer](https://github.com/mossmann/hackrf/blob/master/host/hackrf-tools/src/hackrf_transfer.c) for an example of setting transmit and receive mode and transferring data over USB.
 
-###Function return values
-```
+### Function return values
+```C
 enum hackrf_error {
 	HACKRF_SUCCESS = 0,
 	HACKRF_TRUE = 1,
@@ -541,9 +541,9 @@ enum hackrf_error {
 };
 ```
 
-###RF Filter Path
+### RF Filter Path
 
-```
+```C
 enum rf_path_filter {
 	RF_PATH_FILTER_BYPASS = 0,
 	RF_PATH_FILTER_LOW_PASS = 1,
